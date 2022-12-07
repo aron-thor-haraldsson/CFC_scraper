@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import re
+import json
 
 PATH = r'C:\Program Files (x86)\Google\Chrome\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
@@ -22,3 +23,5 @@ webpage_index_FileWriter.close()
 pattern = r"https?://w{0,3}.?[^\"\']*"
 matches = re.findall(pattern, webpage_index)
 external_resources = [x for x in matches if not x.startswith("https://www.cfcunderwriting")]
+with open('external_resources.json', 'w') as json_file:
+  json.dump(external_resources, json_file)
