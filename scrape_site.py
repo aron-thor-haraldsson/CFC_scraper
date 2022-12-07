@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+import re
 
 PATH = r'C:\Program Files (x86)\Google\Chrome\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
@@ -16,3 +17,8 @@ webpage_index = driver.page_source
 webpage_index_FileWriter = open("webpage_index_file.txt", "w", encoding="utf-8")
 webpage_index_FileWriter.write(webpage_index)
 webpage_index_FileWriter.close()
+
+# find all external resources by regex pattern
+pattern = r"https?://w{0,3}.?[^\"\']*"
+matches = re.findall(pattern, webpage_index)
+external_resources = [x for x in matches if not x.startswith("https://www.cfcunderwriting")]
