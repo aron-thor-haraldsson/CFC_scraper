@@ -10,3 +10,5 @@ WebDriverWait(driver, 5)
 search = driver.find_element(By.ID, "ccc-notify-accept")
 search.click()
 WebDriverWait(driver, 5)
+
+index_webpage = driver.page_source
