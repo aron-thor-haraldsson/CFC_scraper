@@ -22,6 +22,6 @@ webpage_index_FileWriter.close()
 # find all external resources by regex pattern
 pattern = r"https?://w{0,3}.?[^\"\']*"
 matches = re.findall(pattern, webpage_index)
-external_resources = [x for x in matches if not x.startswith("https://www.cfcunderwriting")]
+external_resources = [x for x in matches if not x.startswith("https://www.cfcunderwritin")]
 with open('external_resources.json', 'w') as json_file:
   json.dump(external_resources, json_file)
