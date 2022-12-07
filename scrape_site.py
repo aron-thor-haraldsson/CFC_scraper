@@ -11,4 +11,8 @@ search = driver.find_element(By.ID, "ccc-notify-accept")
 search.click()
 WebDriverWait(driver, 5)
 
-index_webpage = driver.page_source
+# get webpage index and write to text file
+webpage_index = driver.page_source
+webpage_index_FileWriter = open("webpage_index_file.txt", "w", encoding="utf-8")
+webpage_index_FileWriter.write(webpage_index)
+webpage_index_FileWriter.close()
