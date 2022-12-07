@@ -25,3 +25,11 @@ matches = re.findall(pattern, webpage_index)
 external_resources = [x for x in matches if not x.startswith("https://www.cfcunderwritin")]
 with open('external_resources.json', 'w') as json_file:
   json.dump(external_resources, json_file)
+
+# find hyperlinks, enumerate them and single out the "Privacy Policy"
+elems = driver.find_elements(By.CSS_SELECTOR, "[href]")
+hyper_links = [elem.get_attribute('href') for elem in elems]
+for count, hyper_link in enumerate(hyper_links):
+  if hyper_link.find("privacy-policy") > -1:
+    print ("The Privacy Policy has a hyperlink index of: ", count)
+    break
