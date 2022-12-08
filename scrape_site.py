@@ -29,7 +29,9 @@ with open('external_resources.json', 'w') as json_file:
 # find hyperlinks, enumerate them and single out the "Privacy Policy"
 elems = driver.find_elements(By.CSS_SELECTOR, "[href]")
 hyper_links = [elem.get_attribute('href') for elem in elems]
+privacy_policy_url = ""
 for count, hyper_link in enumerate(hyper_links):
   if hyper_link.find("privacy-policy") > -1:
-    print ("The Privacy Policy has a hyperlink index of: ", count)
+    print ("The Privacy Policy has a hyperlink index of:", count)
+    privacy_policy_url = hyper_link
     break
