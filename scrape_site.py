@@ -4,10 +4,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 import re
 import json
 
+# navigate to CFC website
 PATH = r'C:\Program Files (x86)\Google\Chrome\chromedriver.exe'
 driver = webdriver.Chrome(PATH)
 driver.get("https://www.cfcunderwriting.com")
 
+# accept cookie settings
 WebDriverWait(driver, 5)
 search = driver.find_element(By.ID, "ccc-notify-accept")
 search.click()
@@ -36,7 +38,7 @@ for count, hyper_link in enumerate(hyper_links):
     privacy_policy_url = hyper_link
     break
 
-# go to Privacy Policy and
+# navigate to Privacy Policy, count occurrence of each word and dump to JSON
 driver.get(privacy_policy_url)
 privacy_text = driver.find_element(By.XPATH, "/html/body").text
 privacy_dict = dict()
