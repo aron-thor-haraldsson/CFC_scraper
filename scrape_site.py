@@ -35,3 +35,16 @@ for count, hyper_link in enumerate(hyper_links):
     print ("The Privacy Policy has a hyperlink index of:", count)
     privacy_policy_url = hyper_link
     break
+
+# go to Privacy Policy and
+driver.get(privacy_policy_url)
+privacy_text = driver.find_element(By.XPATH, "/html/body").text
+privacy_dict = dict()
+words = privacy_text.split()
+for word in words:
+  word = word.strip()
+  word = word.lower()
+  if word in privacy_dict:
+    privacy_dict[word] += 1
+  else:
+    privacy_dict[word] = 1
