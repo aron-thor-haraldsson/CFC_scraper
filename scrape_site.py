@@ -48,3 +48,5 @@ for word in words:
     privacy_dict[word] += 1
   else:
     privacy_dict[word] = 1
+with open('privacy_policy.json', 'w') as json_file:
+  json.dump(privacy_dict, json_file)
